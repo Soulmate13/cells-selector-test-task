@@ -11,6 +11,7 @@ executors:
 
 caches:
   - &npm_cache cells-selector-v1-{{ checksum "package-lock.json" }}
+  - &build_cache app-build-cache-{{ .master }}
 
 commands:
   defaults:
@@ -47,7 +48,7 @@ commands:
           name: Building App
           command: npm run build
       - save_cache:
-          key: app-build-cache-{{ .master }}
+          key: *build_cache
           paths:
             - ./dist
       - run:
