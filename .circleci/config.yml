@@ -58,6 +58,32 @@ jobs:
     steps:
       - defaults
       - tests
+  build:
+    executor: default
+    steps:
+      - checkout
+      - run:
+          name: Update NPM
+          command: "sudo npm install -g npm"
+      - restore_cache:
+          key: *npm_cache
+      - run:
+          name: Installing Packages
+          command: npm i
+      - save_cache:
+          key: *npm_cache
+          paths:
+            - ./node_modules
+      - run:
+          name: Building App
+          command: npm run build
+      - save_cache:
+          key: app-build-cache-{{ .master }}
+          paths:
+            - ./dist
+      - run:
+          name: Deploy to Netlify
+          command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=dist
 
 workflows:
   version: 2.1
@@ -70,3 +96,10 @@ workflows:
       - tests:
           requires:
             - linters
+      - build:
+          requires:
+            - tests
+          filters:
+            branches:
+              only:
+                - master
