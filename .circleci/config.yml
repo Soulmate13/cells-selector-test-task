@@ -11,7 +11,7 @@ executors:
 
 caches:
   - &npm_cache cells-selector-v1-{{ checksum "package-lock.json" }}
-  - &build_cache app-build-cache-{{ .master }}
+  - &build_cache app-build-cache-{{ .Branch }}
 
 commands:
   defaults:
