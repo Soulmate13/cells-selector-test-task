@@ -5,6 +5,9 @@ executors:
     working_directory: ~/cells-selector
     docker:
       - image: circleci/node:16.14.2
+        auth:
+          username: soulmate13
+          password: DOCKER_TOKEN
 
 caches:
   - &npm_cache cells-selector-v1-{{ checksum "package-lock.json" }}
