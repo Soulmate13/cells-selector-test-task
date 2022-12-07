@@ -11,7 +11,7 @@ const App = () => (
   >
     <CellsProvider>
       <div className="App">
-        <h1 id="grid-heading">Cells Selector</h1>
+        <h1 id="grid-heading">Cells Selector!</h1>
         <Grid/>
       </div>
     </CellsProvider>

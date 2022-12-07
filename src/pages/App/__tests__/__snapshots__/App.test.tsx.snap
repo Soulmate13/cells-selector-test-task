@@ -8,7 +8,7 @@ exports[`App when initially rendered matches snapshot 1`] = `
     <h1
       id="grid-heading"
     >
-      Cells Selector
+      Cells Selector!
     </h1>
     <div
       aria-colcount="5"
