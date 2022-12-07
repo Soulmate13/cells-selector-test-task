@@ -5,7 +5,10 @@ This is an implementation of a live coding tasks that I got at one company durin
 Features:
 
 - Template by Vite
-- Atomic structure
+- Typescript
+- Eslint
+- Atomic project structure
 - State managed by Context + Reducer 
 - Jest + RTL Tests 
 - Dependabot
+- CI/CD with CircleCI and Netlify
