@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { Dispatch, ReactNode } from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { ActionTypes, StateContext, DispatchContext, StateType } from 'contexts/App/CellContext';
+import { ActionTypes, StateContext, DispatchContext, StateType } from 'contexts/App/CellsContext';
 import { initialState } from 'providers/App/CellsProvider';
 
 type ProviderProps = {

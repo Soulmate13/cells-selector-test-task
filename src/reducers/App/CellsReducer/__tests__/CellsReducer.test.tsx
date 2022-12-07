@@ -1,5 +1,5 @@
 import { selectedCells } from 'constants/tests';
-import { ActionTypes } from 'contexts/App/CellContext';
+import { ActionTypes } from 'contexts/App/CellsContext';
 import { initialState } from 'providers/App/CellsProvider';
 import cellsReducer from 'reducers/App/CellsReducer/CellsReducer';
 

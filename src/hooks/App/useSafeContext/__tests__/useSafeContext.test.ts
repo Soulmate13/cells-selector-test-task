@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { DispatchContext } from 'contexts/App/CellContext';
+import { DispatchContext } from 'contexts/App/CellsContext';
 import { wrapper } from 'utils/renderer';
 import useSafeContext from 'hooks/App/useSafeContext/useSafeContext';
 

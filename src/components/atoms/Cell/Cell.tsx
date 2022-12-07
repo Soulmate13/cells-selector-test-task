@@ -1,7 +1,7 @@
 import React from 'react';
-import { ActionTypes, DispatchContext, StateContext, StateType } from 'contexts/App/CellContext';
+import { ActionTypes, DispatchContext, StateContext, StateType } from 'contexts/App/CellsContext';
 import useSafeContext from 'hooks/App/useSafeContext';
-import './style.css';
+import classes from './style.module.css';
 
 export interface ICell {
   index: number;
@@ -26,7 +26,7 @@ const Cell = ({ index, row, isSelected }: ICell) => {
 
   return (
     <button
-      className={`${isSelected ? 'selected' : ''} cell`}
+      className={`${isSelected ? classes.selected : ''} ${classes.cell}`}
       aria-selected={isSelected}
       role="gridcell"
       aria-colindex={index}

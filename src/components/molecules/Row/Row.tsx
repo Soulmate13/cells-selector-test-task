@@ -1,6 +1,6 @@
 import { GridType } from 'constants/grid';
 import Cell from 'components/atoms/Cell';
-import './styles.css';
+import classes from './styles.module.css';
 
 export interface IRow {
   cells: GridType[number];
@@ -8,8 +8,8 @@ export interface IRow {
 
 const Row = ({ cells }: IRow) => (
   <div
-    className="row"
-    role="row"
+    className={classes.row}
+    role={classes.row}
   >
     {cells.map(({ index, row, isSelected }) => (
       <Cell

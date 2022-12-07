@@ -1,12 +1,12 @@
-import React, { createContext } from 'react';
-import { INITIAL_GRID } from 'constants/grid';
+import { createContext, Dispatch } from 'react';
+import { initialGrid } from 'constants/grid';
 
 export type Cell = { row: number, column: number };
 
 export interface StateType {
   startCell: Cell | null;
   isSelecting: boolean;
-  cells: typeof INITIAL_GRID;
+  cells: typeof initialGrid;
 }
 
 export type ActionTypes =
@@ -17,5 +17,5 @@ export type ActionTypes =
 export const StateContext = createContext<StateType | undefined>(undefined);
 StateContext.displayName = 'StateContext';
 
-export const DispatchContext = createContext<React.Dispatch<ActionTypes> | undefined>(undefined);
+export const DispatchContext = createContext<Dispatch<ActionTypes> | undefined>(undefined);
 DispatchContext.displayName = 'DispatchContext';

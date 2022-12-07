@@ -1,5 +1,5 @@
 import { Reducer } from 'react';
-import { ActionTypes, StateType } from 'contexts/App/CellContext';
+import { ActionTypes, StateType } from 'contexts/App/CellsContext';
 import { isNumberBetween } from 'utils/isNumberBetween';
 
 const cellsReducer: Reducer<StateType, ActionTypes> = (state, action) => {

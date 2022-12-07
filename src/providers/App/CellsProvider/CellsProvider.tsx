@@ -1,12 +1,12 @@
 import { ReactNode, useReducer } from 'react';
-import { INITIAL_GRID } from 'constants/grid';
-import { StateContext, DispatchContext, StateType } from 'contexts/App/CellContext';
+import { initialGrid } from 'constants/grid';
+import { StateContext, DispatchContext, StateType } from 'contexts/App/CellsContext';
 import cellsReducer from 'reducers/App/CellsReducer';
 
 export const initialState: StateType = {
   startCell: null,
   isSelecting: false,
-  cells: INITIAL_GRID
+  cells: initialGrid
 };
 
 interface IProps {

@@ -1,4 +1,4 @@
-export const INITIAL_GRID = [
+export const initialGrid = [
   [
     { index: 1, row: 1, isSelected: false },
     { index: 2, row: 1, isSelected: false },
@@ -36,4 +36,4 @@ export const INITIAL_GRID = [
   ]
 ];
 
-export type GridType = typeof INITIAL_GRID;
+export type GridType = typeof initialGrid;

@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import { selectedCells } from 'constants/tests';
-import { StateType } from 'contexts/App/CellContext';
+import { StateType } from 'contexts/App/CellsContext';
 import { render } from 'utils/renderer';
 import Grid from 'components/organisms/Grid/Grid';
 import { initialState } from 'providers/App/CellsProvider';

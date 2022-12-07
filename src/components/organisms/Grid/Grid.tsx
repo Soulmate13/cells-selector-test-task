@@ -1,8 +1,8 @@
 import React from 'react';
-import { ActionTypes, DispatchContext, StateType, StateContext } from 'contexts/App/CellContext';
+import { ActionTypes, DispatchContext, StateType, StateContext } from 'contexts/App/CellsContext';
 import useSafeContext from 'hooks/App/useSafeContext';
 import Row from 'components/molecules/Row';
-import './styles.css';
+import classes from './styles.module.css';
 
 const Grid = () => {
   const grid = useSafeContext<StateType | undefined>(StateContext);
@@ -17,7 +17,7 @@ const Grid = () => {
 
   return (
     <div
-      className="grid"
+      className={classes.grid}
       tabIndex={0}
       onMouseLeave={onMouseLeave}
       role="grid"
