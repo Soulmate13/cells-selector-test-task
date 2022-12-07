@@ -30,7 +30,7 @@ commands:
     steps:
       - run:
           name: Checking TypeScript
-          command: npm run tsc
+          command: npm run typescript
   linters:
     steps:
       - run:
