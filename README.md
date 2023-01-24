@@ -1,16 +1,23 @@
-# Cells selector
+## Getting Started
 
-This is an implementation of a live coding tasks that I got at one company during interview process.
+First, install the dependencies:
 
-View live [version](https://cells-selector.netlify.app/)
+```bash
+npm install
+```
 
-Features:
+If you want to start the development version, run:
 
-- Template by Vite
-- Typescript
-- Eslint
-- Atomic project structure
-- State managed by Context + Reducer 
-- Jest + RTL Tests 
-- Dependabot
-- CI/CD with CircleCI and Netlify
+```bash
+npm run dev
+```
+
+If you want to start the production version, run:
+
+```bash
+npm run build && npm run preview
+```
+
+Open [http://localhost:5173/](http://localhost:3000) with your browser to see the result.
+
+Live version is also available at:

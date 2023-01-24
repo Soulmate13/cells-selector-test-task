@@ -1,0 +1,24 @@
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.actions .actionButton {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-right: 5px;
+}
+
+.actions .actionButton:last-child {
+    margin-right: 0;
+}
+
+.actions .actionButton:disabled {
+    cursor: not-allowed;
+    background-color: lightgray;
+}

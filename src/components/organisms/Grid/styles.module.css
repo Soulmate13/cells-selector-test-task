@@ -1,9 +1,19 @@
-.grid {
+.gridWrapper {
+    display: flex;
+}
+
+.gridContainer {
     display: flex;
     flex-direction: column;
+}
+
+.grid {
+    display: grid;
     gap: 1px;
     background-color: grey;
     border: 2px solid grey;
-
-    padding: 20px;
+    height: 500px;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
 }

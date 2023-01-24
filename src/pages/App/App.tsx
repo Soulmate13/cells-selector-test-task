@@ -2,19 +2,16 @@ import { memo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/organisms/ErrorFallback';
 import Grid from 'components/organisms/Grid';
-import CellsProvider from 'providers/App/CellsProvider';
-
+import classes from './styles.module.css';
 const App = () => (
   <ErrorBoundary
     FallbackComponent={ErrorFallback}
-    onReset={/* istanbul ignore next */() => window.location.reload()}
+    onReset={() => window.location.reload()}
   >
-    <CellsProvider>
-      <div className="App">
-        <h1 id="grid-heading">Cells Selector!</h1>
-        <Grid/>
-      </div>
-    </CellsProvider>
+    <div className="App">
+      <h1 className={classes.heading}>Select game mode and start selecting cells!</h1>
+      <Grid/>
+    </div>
   </ErrorBoundary>
 
 );

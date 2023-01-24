@@ -1,37 +1,64 @@
-import React from 'react';
-import { ActionTypes, DispatchContext, StateType, StateContext } from 'contexts/App/CellsContext';
-import useSafeContext from 'hooks/App/useSafeContext';
-import Row from 'components/molecules/Row';
+import Table from 'components/molecules/Table';
+import List from 'components/molecules/List';
+import Actions from 'components/molecules/Actions';
+import createStore from 'store/store';
 import classes from './styles.module.css';
 
-const Grid = () => {
-  const grid = useSafeContext<StateType | undefined>(StateContext);
-  const dispatch = useSafeContext<React.Dispatch<ActionTypes> | undefined>(DispatchContext);
+export type TTableCell = {
+  selected: boolean;
+}
 
-  const onMouseLeave = () => {
-    /* istanbul ignore else */
-    if (grid?.isSelecting) {
-      dispatch({ type: 'STOP_SELECTING' });
-    }
-  };
+export type TTable = Record<string, TTableCell>
+
+export type TOptions = {
+  size: number;
+  hasStarted: boolean;
+}
+
+export type UseStoreType<StoreType> = <SelectorOutput>(selector: (store: StoreType) => SelectorOutput) =>
+  [SelectorOutput, ((value: Partial<StoreType>) => void)]
+
+const initialTable: TTable = {};
+
+const initialOptions: TOptions = {
+  size: 0,
+  hasStarted: false
+};
+
+const Grid = () => {
+  const {
+    Provider: TableProvider,
+    useStore: useTable
+  } = createStore<TTable>(initialTable);
+
+  const {
+    Provider: OptionsProvider,
+    useStore: useOptions
+  } = createStore<TOptions>(initialOptions);
 
   return (
-    <div
-      className={classes.grid}
-      tabIndex={0}
-      onMouseLeave={onMouseLeave}
-      role="grid"
-      aria-colcount={grid.cells[0].length}
-      aria-describedby="grid-heading"
-      data-testid="grid"
-    >
-      {grid.cells.map((row, index) => (
-        <Row
-          key={index}
-          cells={row}
-        />
-      ))}
-    </div>
+    <TableProvider>
+      <OptionsProvider>
+        <div className={classes.gridWrapper}>
+          <div className={classes.gridContainer}>
+            <Actions
+              useTable={useTable}
+              useOptions={useOptions}
+            />
+
+            <Table
+              useOptions={useOptions}
+              useTable={useTable}
+            />
+          </div>
+
+          <List
+            useTable={useTable}
+            useOptions={useOptions}
+          />
+        </div>
+      </OptionsProvider>
+    </TableProvider>
   );
 };
 

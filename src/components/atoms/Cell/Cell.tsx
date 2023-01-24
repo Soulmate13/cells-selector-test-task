@@ -1,38 +1,26 @@
-import React from 'react';
-import { ActionTypes, DispatchContext, StateContext, StateType } from 'contexts/App/CellsContext';
-import useSafeContext from 'hooks/App/useSafeContext';
+import { TTableCell, TTable, UseStoreType } from 'components/organisms/Grid/Grid';
 import classes from './style.module.css';
 
 export interface ICell {
-  index: number;
+  col: number;
   row: number;
-  isSelected: boolean;
+  useTable: UseStoreType<TTable>
 }
 
-const Cell = ({ index, row, isSelected }: ICell) => {
-  const dispatch = useSafeContext<React.Dispatch<ActionTypes> | undefined>(DispatchContext);
-  const grid = useSafeContext<StateType | undefined>(StateContext);
+const Cell = ({ col, row, useTable }: ICell) => {
+  const [value, setStore] = useTable<TTableCell>((store) => store[`${row}-${col}`]);
 
   const onMouseEnter = () => {
-    /* istanbul ignore else */
-    if (grid?.startCell && grid.isSelecting) {
-      dispatch({ type: 'SELECT_CELLS', payload: { row, column: index } });
-    }
+    setStore({ [`${row}-${col}`]: { selected: !value.selected } });
   };
-
-  const onMouseDown = () => dispatch({ type: 'START_SELECTING', payload: { row, column: index } });
-
-  const onMouseUp = () => dispatch({ type: 'STOP_SELECTING' });
 
   return (
     <button
-      className={`${isSelected ? classes.selected : ''} ${classes.cell}`}
-      aria-selected={isSelected}
+      className={`${value.selected ? classes.selected : ''} ${classes.cell}`}
+      aria-selected={value.selected}
       role="gridcell"
-      aria-colindex={index}
-      data-testid={`cell-${row}-${index}`}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
+      aria-colindex={col}
+      data-testid={`cell-${row}-${col}`}
       onMouseEnter={onMouseEnter}
     />
   );
