@@ -1,4 +1,4 @@
-import { GRID_SIZE } from 'constants/grid';
+import { GRID_DIMENSIONS } from 'constants/grid';
 import Cell from 'components/atoms/Cell';
 import { TOptions, TTable, UseStoreType } from 'components/organisms/Grid/Grid';
 import classes from 'components/organisms/Grid/styles.module.css';
@@ -11,10 +11,13 @@ interface IProps {
 const Table = ({ useTable, useOptions }: IProps) => {
   const [size] = useOptions<number>((store) => store.size);
   const [hasStarted] = useOptions<boolean>((store) => store.hasStarted);
+
+  const divider = window.innerWidth > 768 ? 1 : 2;
+
   return (
     <div
       className={classes.grid}
-      style={{ gridTemplate: `repeat(${size}, ${GRID_SIZE / size - 1}px) / repeat(${size}, ${GRID_SIZE / size - 1}px)` }}
+      style={{ gridTemplate: `repeat(${size}, ${(GRID_DIMENSIONS / divider) / size - 1}px) / repeat(${size}, ${(GRID_DIMENSIONS / divider) / size - 1}px)` }}
     >
       {(!!size && hasStarted) && Array.from(Array(size), (item, index) => {
         const row = [];

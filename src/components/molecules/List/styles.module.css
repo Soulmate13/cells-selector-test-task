@@ -17,3 +17,13 @@
 .list li {
     font-size: 20px;
 }
+
+
+@media screen and (max-width: 1024px) {
+    .listContainer {
+        width: 100%;
+        flex: none;
+        margin-top: 25px;
+        padding: 0;
+    }
+}
